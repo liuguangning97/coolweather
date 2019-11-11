@@ -22,7 +22,6 @@ import com.coolweather.android.util.HttpUtil;
 import com.coolweather.android.util.Utility;
 
 import org.litepal.LitePal;
-import org.litepal.crud.LitePalSupport;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +46,7 @@ public class ChooseAreaFragment extends Fragment {
     private List<Province> provinceList;
     private List<City> cityList;
     private List<County> countyList;
+
     private Province selectedProvince;
     private City selectedCity;
     private int currentLevel;
@@ -123,7 +123,7 @@ public class ChooseAreaFragment extends Fragment {
             currentLevel = LEVEL_CITY;
         }else {
             int provinceCode = selectedProvince.getProvinceCode();
-            String address = "http://guolin.tech/api/china" + provinceCode;
+            String address = "http://guolin.tech/api/china/" + provinceCode;
             queryFromService(address,"city");
         }
     }
@@ -143,8 +143,8 @@ public class ChooseAreaFragment extends Fragment {
         }else {
             int provinceCode = selectedProvince.getProvinceCode();
             int cityCode = selectedCity.getCityCode();
-            String address = "http://guolin.tech/api/china" + provinceCode + "/" + cityCode;
-            queryFromService(address,"country");
+            String address = "http://guolin.tech/api/china/" + provinceCode + "/" + cityCode;
+            queryFromService(address,"county");
         }
     }
 
